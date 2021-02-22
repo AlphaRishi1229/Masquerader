@@ -1,0 +1,6 @@
+Before commiting code to any branch use the following commands locally:
+
+bandit --verbose --recursive --output bandit_index.html --ini setup.cfg --format html .
+flake8 --count --statistics --output-file=flake8_index.txt --tee --doctests --benchmark --import-order-style google --docstring-convention google
+mypy --pretty --html-report reports/mypy/coverage_html --txt-report reports/mypy/coverage_txt --junit-xml reports/mypy/coverage.xml .
+pytest -rA --cov-report annotate:reports/pytest/coverage_annotate --cov-report html:reports/pytest/coverage_html --junitxml reports/pytest/coverage_junitxml/index.xml --cov-report xml:reports/pytest/coverage_xml/index.xml --cov-report term-missing --cov-branch

@@ -1,0 +1,34 @@
+version: '3.4'
+
+x-environment:
+    &common-environment-variables
+    ENV: development
+    DEBUG: 'true'
+    POSTGRES_MASQUERADER_READ_WRITE: postgresql+psycopg2://fyndlocal:fynd@123@postgresql/mockdb
+
+
+services:
+    masquerader:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        hostname: masquerader
+        container_name: masquerader
+        networks:
+            - fyndnet
+        ports:
+            - "80:80"
+        image: masquerader:latest
+        volumes:
+            - .:/srv/masquerader
+        stdin_open: true
+        tty: true
+        environment:
+            <<: *common-environment-variables
+            MODE: server
+
+
+networks:
+    fyndnet:
+        external:
+            name: fyndnet

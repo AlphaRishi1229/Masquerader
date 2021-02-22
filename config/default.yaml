@@ -1,0 +1,23 @@
+# Environment
+ENV: development
+
+# Mode
+MODE: server
+
+# Uvicorn Server Parameters
+DEBUG: true
+
+# Postgresql docker Parameters
+POSTGRES_MASQUERADER_READ_WRITE: postgresql+psycopg2://fyndlocal:fynd@123@postgresql/mockdb
+
+# For venv development
+MASQUERADER_LOCAL: postgresql+psycopg2://fyndlocal:fynd@123@localhost/mockdb
+
+
+POSTGRES_NOPASS_DSN: postgresql+psycopg2://{username}{password}@{host}:{port}/{db}
+
+
+POSTGRES_PASS_DSN: postgresql+psycopg2://{username}:{password}@{host}/{db}
+
+
+POSTGRES_TEST_DSN: postgresql+psycopg2://{username}:{password}@{host}:{port}/mockdb_test
